@@ -153,13 +153,13 @@ is _allowed to overlap_ with the current position. As it says in the DEFLATE spe
 So we can compress the five byte scanline by encoding a zero byte, then the string reference
 〈length = 4, distance = 1〉, like this:
 
-> `1` = final block
-> `10` = Huffman coding block with fixed codes
-> `00110000` = literal byte `00`
-> `0000010` = duplicate string of length 4<a href="#note-2" id="noteref-2">²</a>
-> `00000` = … and distance 1 before current position
-> `0000000` = end of block
-> `00` = padding to end of byte
+* `1` = final block
+* `10` = Huffman coding block with fixed codes
+* `00110000` = literal byte `00`
+* `0000010` = duplicate string of length 4<a href="#note-2" id="noteref-2">²</a>
+* `00000` = … and distance 1 before current position
+* `0000000` = end of block
+* `00` = padding to end of byte
 
 That packs into 4 bytes:
 
